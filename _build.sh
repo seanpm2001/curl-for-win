@@ -1040,6 +1040,7 @@ build_single_target() {
     if [ "${_TOOLCHAIN}" = 'llvm-apple' ]; then
       # --target= works too, but prefer -arch for its multi-arch support (we are not using it yet)
       _CC_GLOBAL="clang${_CCSUFFIX} -arch ${_machines}"
+      _LDFLAGS_GLOBAL+=' -Wl,-ld_new'
     else
       _CC_GLOBAL="clang${_CCSUFFIX} --target=${_TRIPLET}"
     fi
